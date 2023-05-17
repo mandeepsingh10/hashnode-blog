@@ -1,8 +1,8 @@
 ---
-title: "Advanced End-to-End DevOps Pipeline for a Java Web Application: A Step-by-Step Guide"
+title: "Advanced End-to-End CICD Pipeline for a Java Web Application: A Step-by-Step Guide"
 datePublished: Wed May 17 2023 16:24:28 GMT+0000 (Coordinated Universal Time)
 cuid: clhrwy19h000a09lg2h0fb4os
-slug: advanced-end-to-end-devops-pipeline-for-a-java-web-application-a-step-by-step-guide
+slug: advanced-end-to-end-cicd-pipeline-for-a-java-web-application-a-step-by-step-guide
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1684339770728/db5834da-c5bf-488b-9f83-24efde55fd97.png
 tags: ansible, kubernetes, devops, terraform, ci-cd
 
@@ -10,7 +10,7 @@ tags: ansible, kubernetes, devops, terraform, ci-cd
 
 ## Overview
 
-This project aims to build an advanced end-to-end DevOps pipeline for a Java web application.  
+This project aims to build an advanced end-to-end CICD DevOps pipeline for a Java web application.  
 Our project is divided into two main parts:
 
 1. The initial phase involves the installation and configuration of various tools and servers.
@@ -1831,7 +1831,7 @@ The `playall.sh` script provides an option to automate the configuration managem
 ### Stage VI: Verify application deployment on k8s cluster
 
 * ```bash
-        kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl myjavaapp-myapp:8080
+          kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl myjavaapp-myapp:8080
     ```
     
 * We can verify the application deployent using the kubectl command. We create a pod with curl image which curls the service at 8080 port and then the pod is deleted after it's work is done.
@@ -1839,15 +1839,15 @@ The `playall.sh` script provides an option to automate the configuration managem
 * If the exit code of this commad is 0 that means our application deployment was a success else it was a failure
     
 * ```bash
-        stage("Verify application deployment on k8s-cluster") {
-            steps {
-                script{
-                    dir ("kubernetes/"){  
-        				sh 'kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl jwa1-myapp:8080 ' 
-        			        }   
-                        }
-                    }
-                }
+          stage("Verify application deployment on k8s-cluster") {
+              steps {
+                  script{
+                      dir ("kubernetes/"){  
+          				sh 'kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl jwa1-myapp:8080 ' 
+          			        }   
+                          }
+                      }
+                  }
     ```
     
 * Add this stage to the Jenkinsfile, push the code to dev branch and start the build.
