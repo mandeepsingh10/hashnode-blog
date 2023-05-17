@@ -1831,7 +1831,7 @@ The `playall.sh` script provides an option to automate the configuration managem
 ### Stage VI: Verify application deployment on k8s cluster
 
 * ```bash
-          kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl myjavaapp-myapp:8080
+            kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl myjavaapp-myapp:8080
     ```
     
 * We can verify the application deployent using the kubectl command. We create a pod with curl image which curls the service at 8080 port and then the pod is deleted after it's work is done.
@@ -1839,15 +1839,15 @@ The `playall.sh` script provides an option to automate the configuration managem
 * If the exit code of this commad is 0 that means our application deployment was a success else it was a failure
     
 * ```bash
-          stage("Verify application deployment on k8s-cluster") {
-              steps {
-                  script{
-                      dir ("kubernetes/"){  
-          				sh 'kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl jwa1-myapp:8080 ' 
-          			        }   
-                          }
-                      }
-                  }
+            stage("Verify application deployment on k8s-cluster") {
+                steps {
+                    script{
+                        dir ("kubernetes/"){  
+            				sh 'kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl jwa1-myapp:8080 ' 
+            			        }   
+                            }
+                        }
+                    }
     ```
     
 * Add this stage to the Jenkinsfile, push the code to dev branch and start the build.
@@ -1951,4 +1951,4 @@ The `playall.sh` script provides an option to automate the configuration managem
 
 ## References
 
-[https://youtu.be/adG0vq5boL8](https://youtu.be/adG0vq5boL8)
+* A huge shoutout to [Deekshith SN](http://linkedin.com/in/deekshith-sn-972532a1), Phase II of this project is inspired from his youtube tutorial [https://youtu.be/adG0vq5boL8](https://youtu.be/adG0vq5boL8)
